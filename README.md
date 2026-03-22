@@ -1,49 +1,50 @@
-# Voting System using Block-Chain
+## Blockchain-Based Voting System (Django)
 
-A user can cast his vote by visiting this web platform. For web server scripting we have used python based web framework **`Django`**.
+This project is a secure and transparent voting system built using Django and basic blockchain principles. It demonstrates how blockchain can be applied to digital voting to ensure data integrity, transparency, and tamper-proof vote storage.
 
+### Features
 
+* Aadhaar-based voter authentication
+* OTP verification via email
+* Unique private key generation for each vote
+* Secure vote casting with digital signature
+* Blockchain-based storage of votes
+* Block mining with proof-of-work mechanism
+* Vote verification and result display
+* Admin panel for managing voters and parties
+* Dynamic dummy data generation for testing
 
-## How to run
+### How It Works
 
-1. Make sure you are connected to the internet.
-2. Install all the (pip) dependency packages (main packages are listed in `requirements.txt`).
-3. Locate `EMAIL_ADDRESS` and `EMAIL_PASSWORD` variable in `Election/settings.py` file and assign your valid credentials. (See [References](#EmailCredentials))
-4. Make sure email sending is allowed (while development process sending email every time is not a good idea because API allows us to send email only for limited no. of times.).
+1. User logs in using Aadhaar number
+2. OTP is sent to registered email for verification
+3. After verification, a unique private key is generated
+4. User casts vote securely
+5. Vote is hashed and stored in a blockchain block
+6. Blocks are mined and added to the chain
+7. Results are displayed with vote counts and rankings
 
+### Tech Stack
 
-​		For this make sure `send_otp()` method in `views.py` file looks like this:
+* Python
+* Django
+* SQLite (default database)
+* HTML, CSS, JavaScript
+* SMTP (Email integration)
 
-```python
-...
-[success, result] = send_email_otp(email_input)
-# [success, result] = [True, '0']
-...
-```
+### Note
 
-​		and `get_parties()` method in same file (`views.py`) looks like this:
+* OTP and private key delivery are handled via email for realistic simulation
+* This is a prototype system intended for educational purposes
 
-```python
-...
-send_email_private_key(request.session['email-id'], private_key)
-# print(private_key)
-...
-```
+### Usage
 
-5. Locate `manage.py` file and run `python manage.py runserver` in the same directory.
+1. Run the server
+2. Enter Aadhaar number
+3. Verify OTP from email
+4. Cast vote using generated private key
+5. Mine blocks and view results
 
-6. Locate the URL provided in the terminal and access that. by default it is [http://127.0.0.1:8000](http://127.0.0.1:8000).
+---
 
-
-
-## References
-
-- <a name="EmailCredentials">Why and How to add Email credentials:</a>
-
-  How and Why: https://www.youtube.com/watch?v=JRCJ6RtE3xU (Watch out first 2 minutes of this video)
-
-  https://myaccount.google.com/apppasswords
-
-  https://myaccount.google.com/lesssecureapps
-
-  
+This project showcases the practical application of blockchain concepts in building a secure digital voting system.
